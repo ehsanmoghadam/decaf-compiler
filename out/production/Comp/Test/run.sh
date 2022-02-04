@@ -18,13 +18,12 @@ do
     program_input="$filename.in"
     report_filename="$filename.report.txt"
     echo "Running Test $filename -------------------------------------"
-    javac -cp ../compiler/java-cup-11b.jar ../compiler/*java
-    javac -cp ../compiler/AST/*.java:../compiler/java-cup-11b.jar ../Main.java
+    javac --source-path . --class-path ../compiler/java-cup-11b.jar ../Main.java
     if [ $? -eq 1 ]; then
         echo "Code did not Compiler"
     else
         echo "Core compiled successfuly"
-        java -cp "java-cup-11b.jar:" ../compiler/Main -i $filelist -o $output_asm
+        java -cp ../:../compiler/java-cup-11b-runtime.jar ../Main -i $filelist -o $output_asm
         if [ $? -eq 0 ]; then
             echo "Code Compiled Successfuly!"
             spim -a -f "$OUTPUT_DIRECTORY$output_asm" < "$TEST_DIRECTORY$program_input" > "$OUTPUT_DIRECTORY$output_filename"

@@ -4,9 +4,8 @@ import compiler.AST.Program;
 import compiler.Vtable.VtableGenerator;
 import compiler.codegenerator.CodeGenVisitor;
 
-import java.io.File;
-import java.io.PrintStream;
-import java.io.StringReader;
+import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 
 public class Test {
@@ -28,10 +27,11 @@ public class Test {
             System.out.println("parser done");
         } catch (Exception e) {
             System.out.println("Syntax Error");
+            System.out.println(Arrays.toString(e.getStackTrace()));
+//            e.printStackTrace();
             return;
 //            e.printStackTrace();
 //            System.out.println(e);
-//            System.out.println(Arrays.toString(e.getStackTrace()));
         }
         try {
             String outputFile = "D:\\code\\java\\Comp\\src\\compiler\\test_out.txt";
@@ -45,8 +45,27 @@ public class Test {
             writer.flush();
             System.out.println("CG done");
         }catch (Exception e){
+//            e.printStackTrace();
+//            System.out.println("Semantic Error");
+            String[] out = {".data",
+                    "\terror: .asciiz \"Semantic Error\"",
+                    ".text","\t.globl main\n",
+                    "\tmain:",
+                    "\t\tli $v0, 4",
+                    "\t\tla $a0, error",
+                    "\t\tsyscall",
+                    "\t\t#END OF PROGRAM",
+                    "\t\tli $v0,10\n\t\tsyscall"};
             e.printStackTrace();
-            System.out.println("Semantic Error");
+            writeContentToFile("D:\\code\\java\\Comp\\src\\compiler\\test_out.txt",out);
+        }
+    }
+    private static void writeContentToFile(String path, String[] lines) {
+        try (FileWriter writer = new FileWriter(new File(path))) {
+            String content = String.join("\n", lines);
+            writer.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

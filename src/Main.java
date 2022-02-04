@@ -81,9 +81,19 @@ public class Main {
             parser.parse();
 //            System.out.println("parser done");
         } catch (Exception e) {
+            String[] out = {".data",
+                    "\terror: .asciiz \"Syntax Error\"",
+                    ".text","\t.globl main\n",
+                    "\tmain:",
+                    "\t\tli $v0, 4",
+                    "\t\tla $a0, error",
+                    "\t\tsyscall",
+                    "\t\t#END OF PROGRAM",
+                    "\t\tli $v0,10\n\t\tsyscall"};
+            writeContentToFile(outputPath,out);
 //            System.out.println("Syntax Error");
-            String[] out = {"Syntax Error"};
-            writeContentToFile(outputPath, out);
+//            String[] out = {"Syntax Error"};
+//            writeContentToFile(outputPath, out);
             return;
 //            e.printStackTrace();
 //            System.out.println(e);
@@ -103,9 +113,25 @@ public class Main {
             writeContentToFile(outputPath, out);
 //            System.out.println("CG done");
         }catch (Exception e){
+            String[] out = {".data",
+                    "\terror: .asciiz \"Semantic Error\"",
+                    ".text","\t.globl main\n",
+                    "\tmain:",
+                    "\t\tli $v0, 4",
+                    "\t\tla $a0, error",
+                    "\t\tsyscall",
+                    "\t\t#END OF PROGRAM",
+                    "\t\tli $v0,10\n\t\tsyscall"};
+            e.printStackTrace();
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+            writeContentToFile(outputPath,out);
 //            e.printStackTrace();
-            String[] out = {"Semantic Error"};
-            writeContentToFile(outputPath, out);
+//            String[] out = {"Semantic Error"};
+//            writeContentToFile(outputPath, out);
+//            System.out.println("Semantic Error");
             return;
         }
 
