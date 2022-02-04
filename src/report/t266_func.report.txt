@@ -1,0 +1,1 @@
+difference in line #2: file: out/t266_func.out -----> content: 1 <> file: tests/t266_func.out -----> content: 16 

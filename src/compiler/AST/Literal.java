@@ -1,14 +1,14 @@
 package compiler.AST;
 
-public abstract class Literal extends BaseASTNode {
-    private PrimitiveType type;
+public class Literal extends DefaultAbstractSyntaxTreeNode {
+    private PrimitiveTypeEnum type;
 
-    public Literal(PrimitiveType type) {
+    public Literal(PrimitiveTypeEnum type) {
         super(NodeType.LITERAL);
         this.type = type;
     }
 
-    public PrimitiveType getType() {
+    public PrimitiveTypeEnum getType() {
         return type;
     }
 }

@@ -2,15 +2,16 @@ package compiler.Vtable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ClassDecaf {
-    String name;
     ClassDecaf parentClass = null;
-    List<Function> methods = new ArrayList<>();
     List<Field> fields = new ArrayList<>();
+    public static ClassDecaf currentClass;
+    List<Function> methods = new ArrayList<>();
     int objectSize = 0;
     String parentClassName = "";
-    public static ClassDecaf currentClass;
+    String name;
 
     public ClassDecaf(String name) {
         this.name = name;
@@ -55,7 +56,7 @@ public class ClassDecaf {
 
         ClassDecaf that = (ClassDecaf) o;
 
-        return name != null ? name.equals(that.name) : that.name == null;
+        return Objects.equals(name, that.name);
     }
 
     @Override

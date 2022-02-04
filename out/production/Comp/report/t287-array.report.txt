@@ -1,0 +1,1 @@
+different line count in these files! : file out/t287-array.out : #1 , file tests/t287-array.out : #27 

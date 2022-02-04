@@ -1,0 +1,2 @@
+difference in line #1: file: out/t178-func-13.out -----> content: 0.00000000 <> file: tests/t178-func-13.out -----> content: 30.00000000 
+difference in line #2: file: out/t178-func-13.out -----> content: 1.00000000 <> file: tests/t178-func-13.out -----> content: 10.80000019 

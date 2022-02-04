@@ -23,8 +23,8 @@ public class CompilerScanner {
         tokensList = new ArrayList<Tokenizer>();
     }
 
-    private void addNewWordToOutPut(String word, TokenType type) {
-        Tokenizer tokenizer = new Tokenizer(word, type);
+    private void addNewWordToOutPut(String word, TokenType typeInterface) {
+        Tokenizer tokenizer = new Tokenizer(word, typeInterface);
         tokensList.add(tokenizer);
     }
 

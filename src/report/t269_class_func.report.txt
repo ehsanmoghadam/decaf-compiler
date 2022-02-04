@@ -1,0 +1,1 @@
+difference in line #1: file: out/t269_class_func.out -----> content: Semantic Error <> file: tests/t269_class_func.out -----> content: 1000 and 15 

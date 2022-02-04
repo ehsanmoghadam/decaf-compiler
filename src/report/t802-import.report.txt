@@ -1,0 +1,1 @@
+difference in line #1: file: out/t802-import.out -----> content: Semantic Error <> file: tests/t802-import.out -----> content: 131 

@@ -1,0 +1,1 @@
+difference in line #1: file: out/t803-linefunc.out -----> content: Semantic Error <> file: tests/t803-linefunc.out -----> content: Strange function name: line__func__line, line: 2 

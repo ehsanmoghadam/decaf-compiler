@@ -1,0 +1,1 @@
+different line count in these files! : file out/t112-class-6.out : #1 , file tests/t112-class-6.out : #3 

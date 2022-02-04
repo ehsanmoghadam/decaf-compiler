@@ -1,0 +1,1 @@
+different line count in these files! : file out/t262_func.out : #1 , file tests/t262_func.out : #2 

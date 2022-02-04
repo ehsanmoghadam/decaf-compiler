@@ -1,0 +1,1 @@
+difference in line #1: file: out/t174-func-9.out -----> content: Semantic Error <> file: tests/t174-func-9.out -----> content: Special Item! 

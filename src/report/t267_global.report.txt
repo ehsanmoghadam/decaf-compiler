@@ -1,0 +1,1 @@
+different line count in these files! : file out/t267_global.out : #4 , file tests/t267_global.out : #2 

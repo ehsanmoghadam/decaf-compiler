@@ -8,9 +8,9 @@ import java.util.Objects;
 
 public class Function {
     String Name;
-    SymbolInfo returnType;
+    SymbolInformation returnType;
     Scope scope;
-    List<SymbolInfo> argumentsType = new ArrayList<>();
+    List<SymbolInformation> argumentsType = new ArrayList<>();
     AccessMode accessMode = AccessMode.Public;
     public static Function currentFunction;
 
@@ -18,13 +18,13 @@ public class Function {
         Name = name;
     }
 
-    public Function(String name, SymbolInfo returnType, Scope scope) {
+    public Function(String name, SymbolInformation returnType, Scope scope) {
         Name = name;
         this.returnType = returnType;
         this.scope = scope;
     }
 
-    public Function(String name, SymbolInfo returnType, Scope scope, List<SymbolInfo> argumentsType) {
+    public Function(String name, SymbolInformation returnType, Scope scope, List<SymbolInformation> argumentsType) {
         Name = name;
         this.returnType = returnType;
         this.scope = scope;
@@ -32,7 +32,7 @@ public class Function {
     }
 
 
-    public Function(String name, SymbolInfo returnType, List<SymbolInfo> argumentsType) {
+    public Function(String name, SymbolInformation returnType, List<SymbolInformation> argumentsType) {
         Name = name;
         this.returnType = returnType;
         this.argumentsType = argumentsType;
@@ -46,11 +46,11 @@ public class Function {
         Name = name;
     }
 
-    public SymbolInfo getReturnType() {
+    public SymbolInformation getReturnType() {
         return returnType;
     }
 
-    public void setReturnType(SymbolInfo returnType) {
+    public void setReturnType(SymbolInformation returnType) {
         this.returnType = returnType;
     }
 
@@ -62,7 +62,7 @@ public class Function {
         this.scope = scope;
     }
 
-    public List<SymbolInfo> getArgumentsType() {
+    public List<SymbolInformation> getArgumentsType() {
         return argumentsType;
     }
 
@@ -75,7 +75,7 @@ public class Function {
                 '}';
     }
 
-    public void setArgumentsType(List<SymbolInfo> argumentsType) {
+    public void setArgumentsType(List<SymbolInformation> argumentsType) {
         this.argumentsType = argumentsType;
     }
 

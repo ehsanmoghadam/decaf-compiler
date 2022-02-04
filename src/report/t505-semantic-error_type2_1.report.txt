@@ -1,0 +1,1 @@
+difference in line #1: file: out/t505-semantic-error_type2_1.out -----> content: 2 <> file: tests/t505-semantic-error_type2_1.out -----> content: Semantic Error 

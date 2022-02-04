@@ -1,0 +1,1 @@
+different line count in these files! : file out/t805-allmacros.out : #1 , file tests/t805-allmacros.out : #7 

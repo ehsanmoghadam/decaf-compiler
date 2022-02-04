@@ -1,0 +1,15 @@
+difference in line #1: file: out/t256_func.out -----> content: Factorial(1) = 1\ <> file: tests/t256_func.out -----> content: Factorial(1) = 1 
+difference in line #2: file: out/t256_func.out -----> content: Factorial(2) = 2\ <> file: tests/t256_func.out -----> content: Factorial(2) = 2 
+difference in line #3: file: out/t256_func.out -----> content: Factorial(3) = 6\ <> file: tests/t256_func.out -----> content: Factorial(3) = 6 
+difference in line #4: file: out/t256_func.out -----> content: Factorial(4) = 24\ <> file: tests/t256_func.out -----> content: Factorial(4) = 24 
+difference in line #5: file: out/t256_func.out -----> content: Factorial(5) = 120\ <> file: tests/t256_func.out -----> content: Factorial(5) = 120 
+difference in line #6: file: out/t256_func.out -----> content: Factorial(6) = 720\ <> file: tests/t256_func.out -----> content: Factorial(6) = 720 
+difference in line #7: file: out/t256_func.out -----> content: Factorial(7) = 5040\ <> file: tests/t256_func.out -----> content: Factorial(7) = 5040 
+difference in line #8: file: out/t256_func.out -----> content: Factorial(8) = 40320\ <> file: tests/t256_func.out -----> content: Factorial(8) = 40320 
+difference in line #9: file: out/t256_func.out -----> content: Factorial(9) = 362880\ <> file: tests/t256_func.out -----> content: Factorial(9) = 362880 
+difference in line #10: file: out/t256_func.out -----> content: Factorial(10) = 3628800\ <> file: tests/t256_func.out -----> content: Factorial(10) = 3628800 
+difference in line #11: file: out/t256_func.out -----> content: Factorial(11) = 39916800\ <> file: tests/t256_func.out -----> content: Factorial(11) = 39916800 
+difference in line #12: file: out/t256_func.out -----> content: Factorial(12) = 479001600\ <> file: tests/t256_func.out -----> content: Factorial(12) = 479001600 
+difference in line #13: file: out/t256_func.out -----> content: Factorial(13) = 1932053504\ <> file: tests/t256_func.out -----> content: Factorial(13) = 1932053504 
+difference in line #14: file: out/t256_func.out -----> content: Factorial(14) = 1278945280\ <> file: tests/t256_func.out -----> content: Factorial(14) = 1278945280 
+difference in line #15: file: out/t256_func.out -----> content: Factorial(15) = 2004310016\ <> file: tests/t256_func.out -----> content: Factorial(15) = 2004310016 

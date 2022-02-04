@@ -1,0 +1,1 @@
+difference in line #1: file: out/t007-class1.out -----> content: Semantic Error <> file: tests/t007-class1.out -----> content: Name: Bertrand Russel Age: 98 

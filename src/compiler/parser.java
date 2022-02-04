@@ -5,9 +5,7 @@
 
 package compiler;
 
-import java_cup.runtime.*;
 import compiler.AST.*;
-import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
   */
@@ -948,9 +946,9 @@ public class parser extends java_cup.runtime.lr_parser {
     }
     @Override
     protected void report_expected_token_ids(){ }*/
-    protected Program root;
-    void setRoot(Program p) { this.root = p; }
-    public Program getRoot() { return this.root; }
+    protected Start root;
+    void setRoot(Start p) { this.root = p; }
+    public Start getRoot() { return this.root; }
 
 
 /** Cup generated class to encapsulate user supplied action code.*/
@@ -983,7 +981,7 @@ class CUP$parser$actions {
               Object RESULT =null;
 		int start_valleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int start_valright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode start_val = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface start_val = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		RESULT = start_val;
               CUP$parser$result = parser.getSymbolFactory().newSymbol("$START",0, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -994,13 +992,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 1: // program ::= program decl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int pleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int pright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode p = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface p = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
                         RESULT = p;
                         RESULT.addChild(t);
@@ -1013,15 +1011,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 2: // program ::= decl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                             RESULT = new Program();
+                             RESULT = new Start();
                              RESULT.addChild(t);
                              t.setParent(RESULT);
-                             setRoot((Program)RESULT);
+                             setRoot((Start)RESULT);
                          
               CUP$parser$result = parser.getSymbolFactory().newSymbol("program",0, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -1030,20 +1028,20 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 3: // program ::= macro_plus decl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int mpleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int mpright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode mp = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface mp = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                 RESULT = new Program();
+                 RESULT = new Start();
                  RESULT.addChild(mp);
                  RESULT.addChild(t);
                  mp.setParent(RESULT);
                  t.setParent(RESULT);
-                 setRoot((Program)RESULT);
+                 setRoot((Start)RESULT);
            
               CUP$parser$result = parser.getSymbolFactory().newSymbol("program",0, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -1052,16 +1050,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 4: // program ::= program macro_plus decl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int pleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int pright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode p = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface p = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int mpleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int mpright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode mp = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface mp = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
                 RESULT = p;
                 RESULT.addChild(mp);
@@ -1076,13 +1074,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 5: // macro_plus ::= macro_plus macro 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int mpleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int mpright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode mp = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface mp = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int mleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int mright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode m = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface m = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
                     RESULT = mp;
                     RESULT.addChild(m);
@@ -1095,12 +1093,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 6: // macro_plus ::= macro 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int mleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int mright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode m = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface m = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                  RESULT = new BaseASTNode(NodeType.MACROS);
+                  RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.MACROS);
                   RESULT.addChild(m);
                   m.setParent(RESULT);
               
@@ -1111,9 +1109,9 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 7: // macro ::= IMPORT STRINGCONST 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                RESULT = new BaseASTNode(NodeType.MACRO_STATEMENT);
+                RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.MACRO_STATEMENT);
              
               CUP$parser$result = parser.getSymbolFactory().newSymbol("macro",28, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -1122,10 +1120,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 8: // decl ::= variableDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		 RESULT = t; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("decl",1, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -1134,10 +1132,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 9: // decl ::= functionDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		 RESULT = t; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("decl",1, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -1146,10 +1144,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 10: // decl ::= classDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		 RESULT = t; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("decl",1, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -1158,10 +1156,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 11: // variableDecl ::= variable COLON 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode v = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface v = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		 RESULT = v; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("variableDecl",2, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -1170,13 +1168,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 12: // variableDecl_plus ::= variableDecl_plus variableDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int vpleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int vpright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode vp = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface vp = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode v = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface v = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
                                               RESULT = vp;
                                               RESULT.addChild(v);
@@ -1189,12 +1187,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 13: // variableDecl_plus ::= variableDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode v = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface v = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                                               RESULT = new BaseASTNode(NodeType.VARIABLES);
+                                               RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.VARIABLES);
                                                RESULT.addChild(v);
                                                v.setParent(RESULT);
                                           
@@ -1203,17 +1201,17 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // variable ::= type identifier 
+          case 14: // variable ::= typeInterface identifier
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                             RESULT = new BaseASTNode(NodeType.VARIABLE_DECLARATION);
+                             RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.VARIABLE);
                              RESULT.addChild(t);
                              RESULT.addChild(i);
                              t.setParent(RESULT);
@@ -1224,88 +1222,88 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // type ::= INT 
+          case 15: // typeInterface ::= INT
             {
-              ASTNode RESULT =null;
-		 RESULT = new TypeNode(NodeType.INT_TYPE, PrimitiveType.INT); 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("type",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              AbstractSyntaxTreeNodeInterface RESULT =null;
+		 RESULT = new TypeNode(NodeType.INTEGER, PrimitiveTypeEnum.INT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("typeInterface",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // type ::= DOUBLE 
+          case 16: // typeInterface ::= DOUBLE
             {
-              ASTNode RESULT =null;
-		 RESULT = new TypeNode(NodeType.DOUBLE_TYPE, PrimitiveType.DOUBLE); 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("type",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              AbstractSyntaxTreeNodeInterface RESULT =null;
+		 RESULT = new TypeNode(NodeType.DOUBLE, PrimitiveTypeEnum.DOUBLE);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("typeInterface",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // type ::= BOOL 
+          case 17: // typeInterface ::= BOOL
             {
-              ASTNode RESULT =null;
-		 RESULT = new TypeNode(NodeType.BOOLEAN_TYPE, PrimitiveType.BOOL); 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("type",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              AbstractSyntaxTreeNodeInterface RESULT =null;
+		 RESULT = new TypeNode(NodeType.BOOLEAN, PrimitiveTypeEnum.BOOL);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("typeInterface",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // type ::= STRING 
+          case 18: // typeInterface ::= STRING
             {
-              ASTNode RESULT =null;
-		 RESULT = new TypeNode(NodeType.STRING_TYPE, PrimitiveType.STRING); 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("type",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              AbstractSyntaxTreeNodeInterface RESULT =null;
+		 RESULT = new TypeNode(NodeType.STRING, PrimitiveTypeEnum.STRING);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("typeInterface",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // type ::= identifier 
+          case 19: // typeInterface ::= identifier
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		 RESULT = t; 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("type",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("typeInterface",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // type ::= type LRBRACK 
+          case 20: // typeInterface ::= typeInterface LRBRACK
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
                       RESULT = t;
-                      ASTNode e = new BaseASTNode(NodeType.EMPTY_ARRAY);
+                      AbstractSyntaxTreeNodeInterface e = new DefaultAbstractSyntaxTreeNode(NodeType.EMPTYARRAY);
                       RESULT.addChild(e);
                       e.setParent(RESULT);
                      
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("type",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("typeInterface",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // functionDecl ::= type identifier LBRACES formals RBRACES stmtBlock 
+          case 21: // functionDecl ::= typeInterface identifier LBRACES formals RBRACES stmtBlock
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
 		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode f = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface f = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                 			RESULT = new BaseASTNode(NodeType.METHOD_DECLARATION);
+                 			RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.METHOD);
                  			RESULT.addChild(t, i, f, s);
                  			t.setParent(RESULT);
                  			i.setParent(RESULT);
@@ -1319,19 +1317,19 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 22: // functionDecl ::= VOID identifier LBRACES formals RBRACES stmtBlock 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
 		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode f = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface f = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                             RESULT = new BaseASTNode(NodeType.METHOD_DECLARATION);
-                             ASTNode t = new TypeNode(NodeType.VOID, PrimitiveType.VOID);
+                             RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.METHOD);
+                             AbstractSyntaxTreeNodeInterface t = new TypeNode(NodeType.VOID, PrimitiveTypeEnum.VOID);
                              RESULT.addChild(t, i, f, s);
                              t.setParent(RESULT);
                              i.setParent(RESULT);
@@ -1343,21 +1341,21 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 23: // functionDecl ::= type identifier LBRACES RBRACES stmtBlock 
+          case 23: // functionDecl ::= typeInterface identifier LBRACES RBRACES stmtBlock
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
 		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
-		ASTNode t = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		AbstractSyntaxTreeNodeInterface t = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                             RESULT = new BaseASTNode(NodeType.METHOD_DECLARATION);
-                             ASTNode f = new BaseASTNode(NodeType.ARGUMENTS);
+                             RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.METHOD);
+                             AbstractSyntaxTreeNodeInterface f = new DefaultAbstractSyntaxTreeNode(NodeType.ARGUMENTS);
                              RESULT.addChild(t, i, f, s);
                              t.setParent(RESULT);
                              i.setParent(RESULT);
@@ -1371,17 +1369,17 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 24: // functionDecl ::= VOID identifier LBRACES RBRACES stmtBlock 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                             RESULT = new BaseASTNode(NodeType.METHOD_DECLARATION);
-                             ASTNode t = new TypeNode(NodeType.VOID, PrimitiveType.VOID);
-                             ASTNode f = new BaseASTNode(NodeType.ARGUMENTS);
+                             RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.METHOD);
+                             AbstractSyntaxTreeNodeInterface t = new TypeNode(NodeType.VOID, PrimitiveTypeEnum.VOID);
+                             AbstractSyntaxTreeNodeInterface f = new DefaultAbstractSyntaxTreeNode(NodeType.ARGUMENTS);
                              RESULT.addChild(t, i, f, s);
                              t.setParent(RESULT);
                              i.setParent(RESULT);
@@ -1395,16 +1393,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 25: // formals ::= variable COMMA formals 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode v = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface v = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode f = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface f = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
                              RESULT = f;
-                             ASTNode a = new BaseASTNode(NodeType.ARGUMENT);
+                             AbstractSyntaxTreeNodeInterface a = new DefaultAbstractSyntaxTreeNode(NodeType.ARGUMENT);
                              RESULT.addChild(a);
                              a.setParent(RESULT);
                              a.addChild(v);
@@ -1417,13 +1415,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 26: // formals ::= variable 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode v = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface v = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                             RESULT = new BaseASTNode(NodeType.ARGUMENTS);
-                             ASTNode a = new BaseASTNode(NodeType.ARGUMENT);
+                             RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.ARGUMENTS);
+                             AbstractSyntaxTreeNodeInterface a = new DefaultAbstractSyntaxTreeNode(NodeType.ARGUMENT);
                              RESULT.addChild(a);
                              a.setParent(RESULT);
                              a.addChild(v);
@@ -1436,15 +1434,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 27: // classDecl ::= CLASS identifier LCURLY field_plus RCURLY 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int i1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int i1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode i1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface i1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int fsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int fsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode fs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface fs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                              RESULT = new ClassNode();
+                              RESULT = new DecafClassNode();
                               RESULT.addChild(i1);
                               RESULT.addChild(fs);
                               i1.setParent(RESULT);
@@ -1457,12 +1455,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 28: // classDecl ::= CLASS identifier LCURLY RCURLY 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int i1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int i1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode i1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface i1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		
-                              RESULT = new ClassNode();
+                              RESULT = new DecafClassNode();
                               RESULT.addChild(i1);
                               i1.setParent(RESULT);
                           
@@ -1473,13 +1471,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 29: // field_plus ::= field_plus field 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int fsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int fsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode fs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface fs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode f = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface f = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
                                RESULT = fs;
                                RESULT.addChild(f);
@@ -1492,12 +1490,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 30: // field_plus ::= field 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode f = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface f = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                               RESULT = new BaseASTNode(NodeType.FIELDS);
+                               RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FIELDS);
                                RESULT.addChild(f);
                                f.setParent(RESULT);
                            
@@ -1508,15 +1506,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 31: // field ::= accessMode variableDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode a = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface a = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode v = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface v = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                          RESULT = new BaseASTNode(NodeType.FIELD_DECLARATION);
+                          RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FIELD);
                           RESULT.addChild(a);
                           RESULT.addChild(v);
                           a.setParent(RESULT);
@@ -1529,12 +1527,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 32: // field ::= variableDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode v = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface v = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                          RESULT = new BaseASTNode(NodeType.FIELD_DECLARATION);
+                          RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FIELD);
                           RESULT.addChild(v);
                           v.setParent(RESULT);
                       
@@ -1545,15 +1543,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 33: // field ::= accessMode functionDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode a = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface a = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode f = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface f = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                          RESULT = new BaseASTNode(NodeType.FIELD_DECLARATION);
+                          RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FIELD);
                           RESULT.addChild(a);
                           RESULT.addChild(f);
                           a.setParent(RESULT);
@@ -1566,12 +1564,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 34: // field ::= functionDecl 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode f = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface f = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                          RESULT = new BaseASTNode(NodeType.FIELD_DECLARATION);
+                          RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FIELD);
                           RESULT.addChild(f);
                           f.setParent(RESULT);
                       
@@ -1582,10 +1580,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 35: // accessMode ::= PRIVATE 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                               RESULT = new BaseASTNode(NodeType.METHOD_ACCESS);
-                               ASTNode t = new BaseASTNode(NodeType.PRIVATE_ACCESS);
+                               RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.ACCESSMETHOD);
+                               AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.PRIVATE);
                                RESULT.addChild(t);
                                t.setParent(RESULT);
                            
@@ -1596,10 +1594,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 36: // accessMode ::= PUBLIC 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                                                RESULT = new BaseASTNode(NodeType.METHOD_ACCESS);
-                                                ASTNode t = new BaseASTNode(NodeType.PUBLIC_ACCESS);
+                                                RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.ACCESSMETHOD);
+                                                AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.PUBLIC);
                                                 RESULT.addChild(t);
                                                 t.setParent(RESULT);
                                             
@@ -1610,9 +1608,9 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 37: // stmtBlock ::= LCURLY RCURLY 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                                  RESULT = new BaseASTNode(NodeType.BLOCK);
+                                  RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.BLOCK);
                               
               CUP$parser$result = parser.getSymbolFactory().newSymbol("stmtBlock",9, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -1621,12 +1619,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 38: // stmtBlock ::= LCURLY variableDecl_plus RCURLY 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int vsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int vsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode vs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface vs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                               RESULT = new BaseASTNode(NodeType.BLOCK);
+                               RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.BLOCK);
                                RESULT.addChild(vs);
                                vs.setParent(RESULT);
                               
@@ -1637,12 +1635,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 39: // stmtBlock ::= LCURLY stmt_plus RCURLY 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int spleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int spright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode sp = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface sp = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                              RESULT = new BaseASTNode(NodeType.BLOCK);
+                              RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.BLOCK);
                               RESULT.addChild(sp);
                               sp.setParent(RESULT);
                               
@@ -1653,15 +1651,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 40: // stmtBlock ::= LCURLY variableDecl_plus stmt_plus RCURLY 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int vsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int vsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode vs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface vs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int spleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int spright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode sp = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface sp = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                               RESULT = new BaseASTNode(NodeType.BLOCK);
+                               RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.BLOCK);
                                RESULT.addChild(vs);
                                RESULT.addChild(sp);
                                vs.setParent(RESULT);
@@ -1674,13 +1672,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 41: // stmt_plus ::= stmt_plus stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int spleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int spright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode sp = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface sp = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
                                RESULT = sp;
                                RESULT.addChild(s);
@@ -1693,12 +1691,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 42: // stmt_plus ::= stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                               RESULT = new BaseASTNode(NodeType.STATEMENTS);
+                               RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENTS);
                                RESULT.addChild(s);
                                s.setParent(RESULT);
                            
@@ -1709,12 +1707,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 43: // stmt ::= expr COLON 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(e);
                      e.setParent(RESULT);
                   
@@ -1725,10 +1723,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 44: // stmt ::= COLON 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                     ASTNode t = new BaseASTNode(NodeType.EMPTY_STATEMENT);
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.EMPTYSTATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(t);
                      t.setParent(RESULT);
                    
@@ -1739,12 +1737,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 45: // stmt ::= ifStmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ifsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int ifsright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode ifs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface ifs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(ifs);
                      ifs.setParent(RESULT);
                   
@@ -1755,12 +1753,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 46: // stmt ::= whileStmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int whsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int whsright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode whs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface whs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(whs);
                      whs.setParent(RESULT);
                   
@@ -1771,12 +1769,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 47: // stmt ::= forStmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int fsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int fsright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode fs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface fs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(fs);
                      fs.setParent(RESULT);
                   
@@ -1787,12 +1785,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 48: // stmt ::= breakStmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int bsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int bsright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode bs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface bs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(bs);
                      bs.setParent(RESULT);
                   
@@ -1803,12 +1801,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 49: // stmt ::= continueStmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int csleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int csright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode cs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface cs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(cs);
                      cs.setParent(RESULT);
                   
@@ -1819,12 +1817,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 50: // stmt ::= returnStmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int rsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int rsright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode rs = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface rs = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(rs);
                      rs.setParent(RESULT);
                   
@@ -1835,12 +1833,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 51: // stmt ::= printStmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int psleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int psright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode ps = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface ps = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(ps);
                      ps.setParent(RESULT);
                   
@@ -1851,12 +1849,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 52: // stmt ::= stmtBlock 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int sbleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sbright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode sb = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface sb = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     RESULT = new BaseASTNode(NodeType.STATEMENT);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.STATEMENT);
                      RESULT.addChild(sb);
                      sb.setParent(RESULT);
                   
@@ -1867,15 +1865,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 53: // ifStmt ::= IF LBRACES expr RBRACES stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                           RESULT = new BaseASTNode(NodeType.IF_STATEMENT);
+                           RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.IF);
                            RESULT.addChild(e, s);
                            e.setParent(RESULT);
                            s.setParent(RESULT);
@@ -1887,18 +1885,18 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 54: // ifStmt ::= IF LBRACES expr RBRACES stmt ELSE stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
 		int s1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int s1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode s1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface s1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int s2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int s2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                           RESULT = new BaseASTNode(NodeType.IF_STATEMENT);
+                           RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.IF);
                            RESULT.addChild(e, s1,s2);
                            e.setParent(RESULT);
                            s1.setParent(RESULT);
@@ -1911,15 +1909,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 55: // whileStmt ::= WHILE LBRACES expr RBRACES stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                         RESULT = new BaseASTNode(NodeType.WHILE_STATEMENT);
+                         RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.WHILE);
                          RESULT.addChild(e, s);
                          e.setParent(RESULT);
                          s.setParent(RESULT);
@@ -1931,15 +1929,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 56: // forStmt ::= FOR LBRACES COLON expr COLON RBRACES stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                            RESULT = new BaseASTNode(NodeType.FOR_STATEMENT);
+                            RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FOR);
                             RESULT.addChild(e, s);
                             e.setParent(RESULT);
                             s.setParent(RESULT);
@@ -1951,18 +1949,18 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 57: // forStmt ::= FOR LBRACES expr COLON expr COLON RBRACES stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                            RESULT = new BaseASTNode(NodeType.FOR_STATEMENT);
+                            RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FOR);
                             RESULT.addChild(e1,e2,s);
                             e1.setParent(RESULT);
                             e2.setParent(RESULT);
@@ -1975,18 +1973,18 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 58: // forStmt ::= FOR LBRACES COLON expr COLON expr RBRACES stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                            RESULT = new BaseASTNode(NodeType.FOR_STATEMENT);
+                            RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FOR);
                             RESULT.addChild(e1,s,e2);
                             e1.setParent(RESULT);
                             e2.setParent(RESULT);
@@ -1999,21 +1997,21 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 59: // forStmt ::= FOR LBRACES expr COLON expr COLON expr RBRACES stmt 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-6)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-6)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
 		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e3 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e3 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode s = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface s = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                            RESULT = new BaseASTNode(NodeType.FOR_STATEMENT);
+                            RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.FOR);
                             RESULT.addChild(e1,e2,s,e3);
                             e1.setParent(RESULT);
                             e2.setParent(RESULT);
@@ -2027,9 +2025,9 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 60: // returnStmt ::= RETURN COLON 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                    RESULT = new BaseASTNode(NodeType.RETURN_STATEMENT);
+                    RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.RETURN);
                 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("returnStmt",21, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -2038,12 +2036,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 61: // returnStmt ::= RETURN expr COLON 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                                   RESULT = new BaseASTNode(NodeType.RETURN_STATEMENT);
+                                   RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.RETURN);
                                    RESULT.addChild(e);
                                    e.setParent(RESULT);
                                
@@ -2054,9 +2052,9 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 62: // breakStmt ::= BREAK COLON 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                                  RESULT = new BaseASTNode(NodeType.BREAK_STATEMENT);
+                                  RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.BREAK);
                               
               CUP$parser$result = parser.getSymbolFactory().newSymbol("breakStmt",18, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -2065,9 +2063,9 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 63: // continueStmt ::= CONTINUE COLON 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                                     RESULT = new BaseASTNode(NodeType.CONTINUE_STATEMENT);
+                                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.CONTINUE);
                                  
               CUP$parser$result = parser.getSymbolFactory().newSymbol("continueStmt",19, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -2076,12 +2074,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 64: // printStmt ::= PRINT LBRACES expr_plus RBRACES COLON 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int esleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int esright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode es = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface es = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		
-                                  RESULT = new BaseASTNode(NodeType.PRINT_STATEMENT);
+                                  RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.PRINT);
                                   RESULT.addChild(es);
                                   es.setParent(RESULT);
                               
@@ -2092,12 +2090,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 65: // expr_plus ::= expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                                  RESULT = new BaseASTNode(NodeType.EXPRESSIONS);
+                                  RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.EXPRESSIONS);
                                   RESULT.addChild(e1);
                                   e1.setParent(RESULT);
                               
@@ -2108,13 +2106,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 66: // expr_plus ::= expr_plus COMMA expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
                                   RESULT = e1;
                                   RESULT.addChild(e2);
@@ -2127,20 +2125,20 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 67: // expr ::= lValue ASSIGN expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int lleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int lright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode l = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface l = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                     ASTNode t = new BaseASTNode(NodeType.ASSIGN);
+                     AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.ASSIGN);
                      t.addChild(l);
                      t.addChild(e);
                      l.setParent(t);
                      e.setParent(t);
-                     RESULT = new ExpressionNode();
+                     RESULT = new ExprNode();
                      RESULT.addChild(t);
                      t.setParent(RESULT);
                  
@@ -2151,20 +2149,20 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 68: // expr ::= lValue DIVASSIGN expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int lleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int lright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode l = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface l = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.DIVASSIGN);
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.DIVASSIGN);
                       t.addChild(l);
                       t.addChild(e);
                       l.setParent(t);
                       e.setParent(t);
-                      RESULT = new ExpressionNode();
+                      RESULT = new ExprNode();
                       RESULT.addChild(t);
                       t.setParent(RESULT);
                   
@@ -2175,20 +2173,20 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 69: // expr ::= lValue PRODASSIGN expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int lleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int lright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode l = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface l = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.PRODASSIGN);
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.PRODASSIGN);
                       t.addChild(l);
                       t.addChild(e);
                       l.setParent(t);
                       e.setParent(t);
-                      RESULT = new ExpressionNode();
+                      RESULT = new ExprNode();
                       RESULT.addChild(t);
                       t.setParent(RESULT);
                   
@@ -2199,20 +2197,20 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 70: // expr ::= lValue ADDASSIGN expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int lleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int lright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode l = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface l = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.ADDASSIGN);
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.ADDASSIGN);
                       t.addChild(l);
                       t.addChild(e);
                       l.setParent(t);
                       e.setParent(t);
-                      RESULT = new ExpressionNode();
+                      RESULT = new ExprNode();
                       RESULT.addChild(t);
                       t.setParent(RESULT);
                   
@@ -2223,20 +2221,20 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 71: // expr ::= lValue MINUSASSIGN expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int lleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int lright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode l = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface l = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.MINUSASSIGN);
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.MINUSASSIGN);
                       t.addChild(l);
                       t.addChild(e);
                       l.setParent(t);
                       e.setParent(t);
-                      RESULT = new ExpressionNode();
+                      RESULT = new ExprNode();
                       RESULT.addChild(t);
                       t.setParent(RESULT);
                   
@@ -2247,12 +2245,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 72: // expr ::= constant 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int cleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int cright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode c = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface c = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      RESULT = new ExpressionNode();
+                      RESULT = new ExprNode();
                       RESULT.addChild(c);
                       c.setParent(RESULT);
                   
@@ -2263,12 +2261,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 73: // expr ::= lValue 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int lleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int lright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode l = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface l = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      RESULT = new ExpressionNode();
+                      RESULT = new ExprNode();
                       RESULT.addChild(l);
                       l.setParent(RESULT);
                   
@@ -2279,10 +2277,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 74: // expr ::= THIS 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                      RESULT = new ExpressionNode();
-                      ASTNode t = new BaseASTNode(NodeType.THIS);
+                      RESULT = new ExprNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.THIS);
                       RESULT.addChild(t);
                       t.setParent(RESULT);
                   
@@ -2293,12 +2291,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 75: // expr ::= call 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int cleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int cright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode c = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface c = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      RESULT = new ExpressionNode();
+                      RESULT = new ExprNode();
                       RESULT.addChild(c);
                       c.setParent(RESULT);
                   
@@ -2309,10 +2307,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 76: // expr ::= LBRACES expr RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
                       RESULT = e;
                   
@@ -2323,16 +2321,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 77: // expr ::= expr ADD expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      RESULT = new ExpressionNode();
-                      ASTNode t = new BaseASTNode(NodeType.ADDITION);
+                      RESULT = new ExprNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.ADD);
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2347,16 +2345,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 78: // expr ::= expr MINUS expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      RESULT = new ExpressionNode();
-                      ASTNode t = new BaseASTNode(NodeType.SUBTRACTION);
+                      RESULT = new ExprNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.SUB);
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2371,16 +2369,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 79: // expr ::= expr PROD expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.MULTIPLICATION);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.MUL);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2395,16 +2393,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 80: // expr ::= expr DIV expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.DIVISION);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.DIV);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2419,16 +2417,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 81: // expr ::= expr MOD expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.MOD);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.MOD);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2443,13 +2441,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 82: // expr ::= MINUS expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      RESULT = new ExpressionNode();
-                      ASTNode t = new BaseASTNode(NodeType.NEGATIVE);
+                      RESULT = new ExprNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.MINUS);
                       t.addChild(e1);
                       RESULT.addChild(t);
                       t.setParent(RESULT);
@@ -2462,16 +2460,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 83: // expr ::= expr LESS expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.LESS_THAN);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.LESSTHAN);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2486,16 +2484,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 84: // expr ::= expr LESSEQUAL expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.LESS_THAN_OR_EQUAL);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.LESSTHANOREQUAL);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2510,16 +2508,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 85: // expr ::= expr GREATER expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.GREATER_THAN);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.GREATERTHAN);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2534,16 +2532,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 86: // expr ::= expr GREATEREQUAL expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.GREATER_THAN_OR_EQUAL);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.GREATERTHANOREQUAL);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2558,16 +2556,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 87: // expr ::= expr EQUAL expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.EQUAL);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.EQUAL);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2582,16 +2580,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 88: // expr ::= expr NOTEQUAL expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.NOT_EQUAL);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.NOTEQUAL);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2606,16 +2604,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 89: // expr ::= expr AND expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.BOOLEAN_AND);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.BOOLEANAND);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2630,16 +2628,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 90: // expr ::= expr OR expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.BOOLEAN_OR);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.BOOLEANOR);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       t.addChild(e2);
                       RESULT.addChild(t);
@@ -2654,13 +2652,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 91: // expr ::= NOT expr 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.BOOLEAN_NOT);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.BOOLEANNOT);
+                      RESULT = new ExprNode();
                       t.addChild(e1);
                       RESULT.addChild(t);
                       e1.setParent(t);
@@ -2673,10 +2671,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 92: // expr ::= READINTEGER LBRACES RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                      ASTNode t = new BaseASTNode(NodeType.READ_INTEGER);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.READINTEGER);
+                      RESULT = new ExprNode();
                       RESULT.addChild(t);
                       t.setParent(RESULT);
                   
@@ -2687,10 +2685,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 93: // expr ::= READLINE LBRACES RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                      ASTNode t = new BaseASTNode(NodeType.READ_LINE);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.READ_LINE);
+                      RESULT = new ExprNode();
                       RESULT.addChild(t);
                       t.setParent(RESULT);
                   
@@ -2701,13 +2699,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 94: // expr ::= NEW identifier 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.NEW_IDENTIFIER);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.NEW);
+                      RESULT = new ExprNode();
                       t.addChild(i);
                       RESULT.addChild(t);
                       t.setParent(RESULT);
@@ -2718,18 +2716,18 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 95: // expr ::= NEWARRAY LBRACES expr COMMA type RBRACES 
+          case 95: // expr ::= NEWARRAY LBRACES expr COMMA typeInterface RBRACES
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int tyleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int tyright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode ty = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface ty = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.NEW_ARRAY);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.NEWARRAY);
+                      RESULT = new ExprNode();
                       t.addChild(e);
                       t.addChild(ty);
                       RESULT.addChild(t);
@@ -2744,13 +2742,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 96: // expr ::= ITOD LBRACES expr RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.ITOD);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.ITOD);
+                      RESULT = new ExprNode();
                       t.addChild(e);
                       RESULT.addChild(t);
                       t.setParent(RESULT);
@@ -2763,13 +2761,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 97: // expr ::= DTOI LBRACES expr RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.DTOI);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.DTOI);
+                      RESULT = new ExprNode();
                       t.addChild(e);
                       RESULT.addChild(t);
                       t.setParent(RESULT);
@@ -2782,13 +2780,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 98: // expr ::= ITOB LBRACES expr RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.ITOB);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.ITOB);
+                      RESULT = new ExprNode();
                       t.addChild(e);
                       RESULT.addChild(t);
                       t.setParent(RESULT);
@@ -2801,13 +2799,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 99: // expr ::= BTOI LBRACES expr RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                      ASTNode t = new BaseASTNode(NodeType.BTOI);
-                      RESULT = new ExpressionNode();
+                      AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.BTOI);
+                      RESULT = new ExprNode();
                       t.addChild(e);
                       RESULT.addChild(t);
                       t.setParent(RESULT);
@@ -2820,10 +2818,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 100: // expr ::= FUNC 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                        RESULT = new ExpressionNode();
-                        ASTNode t = new BaseASTNode(NodeType.FUNC);
+                        RESULT = new ExprNode();
+                        AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.FUNC);
                         RESULT.addChild(t);
                         t.setParent(RESULT);
                     
@@ -2834,10 +2832,10 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 101: // expr ::= LINE 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		
-                        RESULT = new ExpressionNode();
-                        ASTNode t = new BaseASTNode(NodeType.LINE);
+                        RESULT = new ExprNode();
+                        AbstractSyntaxTreeNodeInterface t = new DefaultAbstractSyntaxTreeNode(NodeType.LINE);
                         RESULT.addChild(t);
                         t.setParent(RESULT);
                     
@@ -2848,12 +2846,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 102: // lValue ::= identifier 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                       RESULT = new BaseASTNode(NodeType.LVALUE);
+                       RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.LVALUE);
                        RESULT.addChild(i);
                        i.setParent(RESULT);
                    
@@ -2864,15 +2862,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 103: // lValue ::= expr DOT identifier 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                       RESULT = new BaseASTNode(NodeType.LVALUE);
+                       RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.LVALUE);
                        RESULT.addChild(i);
                        RESULT.addChild(e);
                        i.setParent(RESULT);
@@ -2885,15 +2883,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 104: // lValue ::= expr LBRACK expr RBRACK 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode e1 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface e1 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode e2 = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface e2 = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                       RESULT = new BaseASTNode(NodeType.LVALUE);
+                       RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.LVALUE);
                        RESULT.addChild(e1);
                        RESULT.addChild(e2);
                        e1.setParent(RESULT);
@@ -2906,15 +2904,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 105: // call ::= identifier LBRACES actuals RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int aleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode a = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface a = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                     RESULT = new BaseASTNode(NodeType.CALL);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.CALL);
                      RESULT.addChild(i);
                      RESULT.addChild(a);
                      i.setParent(RESULT);
@@ -2927,18 +2925,18 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 106: // call ::= expr DOT identifier LBRACES actuals RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
 		int aleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		ASTNode a = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		AbstractSyntaxTreeNodeInterface a = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		
-                     RESULT = new BaseASTNode(NodeType.CALL);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.CALL);
                      RESULT.addChild(e);
                      RESULT.addChild(i);
                      RESULT.addChild(a);
@@ -2953,12 +2951,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 107: // call ::= identifier LBRACES RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		
-                     RESULT = new BaseASTNode(NodeType.CALL);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.CALL);
                      RESULT.addChild(i);
                      i.setParent(RESULT);
                  
@@ -2969,15 +2967,15 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 108: // call ::= expr DOT identifier LBRACES RBRACES 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
-		ASTNode e = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		AbstractSyntaxTreeNodeInterface e = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		ASTNode i = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		AbstractSyntaxTreeNodeInterface i = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
 		
-                     RESULT = new BaseASTNode(NodeType.CALL);
+                     RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.CALL);
                      RESULT.addChild(e);
                      RESULT.addChild(i);
                      e.setParent(RESULT);
@@ -2990,12 +2988,12 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 109: // actuals ::= expr_plus 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int esleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int esright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		ASTNode es = (ASTNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		AbstractSyntaxTreeNodeInterface es = (AbstractSyntaxTreeNodeInterface)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                            RESULT = new BaseASTNode(NodeType.ACTUALS);
+                            RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.ACTUALS);
                             RESULT.addChild(es);
                             es.setParent(RESULT);
                         
@@ -3006,11 +3004,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 110: // constant ::= INTCONST 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		Integer i = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
-		 RESULT = new IntegerLiteralNode(i); 
+		 RESULT = new IntegerNode(i);
               CUP$parser$result = parser.getSymbolFactory().newSymbol("constant",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -3018,11 +3016,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 111: // constant ::= DOUBLECONST 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int dleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int dright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		Float d = (Float)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
-		 RESULT = new DoubleLiteralNode(d); 
+		 RESULT = new DoubleNode(d);
               CUP$parser$result = parser.getSymbolFactory().newSymbol("constant",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -3030,7 +3028,7 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 112: // constant ::= HEXCONST 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int hleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int hright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		String h = (String)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
@@ -3042,8 +3040,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 113: // constant ::= TRUE 
             {
-              ASTNode RESULT =null;
-		 RESULT = new BooleanLiteralNode(true); 
+              AbstractSyntaxTreeNodeInterface RESULT =null;
+		 RESULT = new BooleanNode(true);
               CUP$parser$result = parser.getSymbolFactory().newSymbol("constant",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -3051,8 +3049,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 114: // constant ::= FALSE 
             {
-              ASTNode RESULT =null;
-		 RESULT = new BooleanLiteralNode(false); 
+              AbstractSyntaxTreeNodeInterface RESULT =null;
+		 RESULT = new BooleanNode(false);
               CUP$parser$result = parser.getSymbolFactory().newSymbol("constant",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -3060,11 +3058,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 115: // constant ::= STRINGCONST 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		String s = (String)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
-		 RESULT = new StringLiteralNode(s); 
+		 RESULT = new StringNode(s);
               CUP$parser$result = parser.getSymbolFactory().newSymbol("constant",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -3072,8 +3070,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 116: // constant ::= NULL 
             {
-              ASTNode RESULT =null;
-		 RESULT = new BaseASTNode(NodeType.NULL_LITERAL); 
+              AbstractSyntaxTreeNodeInterface RESULT =null;
+		 RESULT = new DefaultAbstractSyntaxTreeNode(NodeType.NULL);
               CUP$parser$result = parser.getSymbolFactory().newSymbol("constant",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -3081,11 +3079,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 117: // identifier ::= ID 
             {
-              ASTNode RESULT =null;
+              AbstractSyntaxTreeNodeInterface RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		String i = (String)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
-		 RESULT = new IdentifierNode(i); 
+		 RESULT = new IDNode(i);
               CUP$parser$result = parser.getSymbolFactory().newSymbol("identifier",30, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;

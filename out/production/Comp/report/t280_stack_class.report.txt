@@ -1,0 +1,1 @@
+difference in line #1: file: out/t280_stack_class.out -----> content: Semantic Error <> file: tests/t280_stack_class.out -----> content: 4 4 7 3 1 

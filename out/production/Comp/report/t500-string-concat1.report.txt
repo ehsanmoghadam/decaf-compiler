@@ -1,0 +1,1 @@
+difference in line #1: file: out/t500-string-concat1.out -----> content: world <> file: tests/t500-string-concat1.out -----> content: hello world 

@@ -1,0 +1,1 @@
+different line count in these files! : file out/t191-vardecl-3.out : #1 , file tests/t191-vardecl-3.out : #2 

@@ -1,11 +1,12 @@
 package compiler.codegenerator;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Scope {
 
-    private String name;
-    private HashMap<String, Symbol> variables;
+    String name;
+    HashMap<String, Symbol> variables;
 
     public Scope(String name) {
         this.name = name;
@@ -23,7 +24,7 @@ public class Scope {
 
         Scope scope = (Scope) o;
 
-        return name != null ? name.equals(scope.name) : scope.name == null;
+        return Objects.equals(name, scope.name);
     }
 
     @Override

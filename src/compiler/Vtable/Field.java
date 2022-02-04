@@ -1,10 +1,12 @@
 package compiler.Vtable;
 
-import compiler.codegenerator.SymbolInfo;
+import compiler.codegenerator.SymbolInformation;
+
+import java.util.Objects;
 
 public class Field {
     String name;
-    SymbolInfo symbolInfo;
+    SymbolInformation symbolInformation;
     AccessMode accessMode = AccessMode.Public;
     ClassDecaf classDecaf = null;
     public static AccessMode currentAccessMode;
@@ -17,12 +19,12 @@ public class Field {
         this.name = name;
     }
 
-    public SymbolInfo getSymbolInfo() {
-        return symbolInfo;
+    public SymbolInformation getSymbolInfo() {
+        return symbolInformation;
     }
 
-    public void setSymbolInfo(SymbolInfo symbolInfo) {
-        this.symbolInfo = symbolInfo;
+    public void setSymbolInfo(SymbolInformation symbolInformation) {
+        this.symbolInformation = symbolInformation;
     }
 
     public AccessMode getAccessMode() {
@@ -57,7 +59,7 @@ public class Field {
     public String toString() {
         return "Field{" +
                 "name='" + name + '\'' +
-                ", symbolInfo=" + symbolInfo +
+                ", symbolInfo=" + symbolInformation +
                 '}';
     }
 
@@ -68,8 +70,8 @@ public class Field {
 
         Field field = (Field) o;
 
-        if (name != null ? !name.equals(field.name) : field.name != null) return false;
-        return classDecaf != null ? classDecaf.equals(field.classDecaf) : field.classDecaf == null;
+        if (!Objects.equals(name, field.name)) return false;
+        return Objects.equals(classDecaf, field.classDecaf);
     }
 
     @Override

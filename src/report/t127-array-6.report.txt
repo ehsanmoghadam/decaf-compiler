@@ -1,0 +1,1 @@
+different line count in these files! : file out/t127-array-6.out : #2 , file tests/t127-array-6.out : #4 

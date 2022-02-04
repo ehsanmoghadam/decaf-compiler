@@ -1,0 +1,1 @@
+different line count in these files! : file out/t703-define-4.out : #1 , file tests/t703-define-4.out : #25 

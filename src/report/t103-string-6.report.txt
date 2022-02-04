@@ -1,0 +1,1 @@
+different line count in these files! : file out/t103-string-6.out : #1 , file tests/t103-string-6.out : #10 

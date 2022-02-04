@@ -1,0 +1,1 @@
+difference in line #1: file: out/t808-import4.out -----> content: Syntax Error <> file: tests/t808-import4.out -----> content: 34 

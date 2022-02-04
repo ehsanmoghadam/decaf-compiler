@@ -6,41 +6,41 @@ import compiler.codegenerator.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VtableGenerator implements SimpleVisitor {
+public class VtableGenerator implements VisitorInterface {
 
     public static List<Function> functions = new ArrayList<>();
     public static List<ClassDecaf> classes = new ArrayList<>();
-    private SymbolTable symbolTable = new SymbolTable();
+    SymbolTable symbolTable = new SymbolTable();
 
     @Override
-    public void visit(ASTNode node) throws Exception {
+    public void visit(AbstractSyntaxTreeNodeInterface node) throws Exception {
         switch (node.getNodeType()) {
-            case BOOLEAN_TYPE:
-                node.setSymbolInfo(new SymbolInfo(node, PrimitiveType.BOOL));
+            case BOOLEAN:
+                node.setSymbolInfo(new SymbolInformation(node, PrimitiveTypeEnum.BOOL));
                 node.getSymbolInfo().setDimensionArray(node.getChildren().size());
                 break;
-            case DOUBLE_TYPE:
-                node.setSymbolInfo(new SymbolInfo(node, PrimitiveType.DOUBLE));
+            case DOUBLE:
+                node.setSymbolInfo(new SymbolInformation(node, PrimitiveTypeEnum.DOUBLE));
                 node.getSymbolInfo().setDimensionArray(node.getChildren().size());
                 break;
-            case INT_TYPE:
-                node.setSymbolInfo(new SymbolInfo(node, PrimitiveType.INT));
+            case INTEGER:
+                node.setSymbolInfo(new SymbolInformation(node, PrimitiveTypeEnum.INT));
                 node.getSymbolInfo().setDimensionArray(node.getChildren().size());
                 break;
-            case STRING_TYPE:
-                node.setSymbolInfo(new SymbolInfo(node, PrimitiveType.STRING));
+            case STRING:
+                node.setSymbolInfo(new SymbolInformation(node, PrimitiveTypeEnum.STRING));
                 node.getSymbolInfo().setDimensionArray(node.getChildren().size());
                 break;
             case VOID:
-                node.setSymbolInfo(new SymbolInfo(node, PrimitiveType.VOID));
+                node.setSymbolInfo(new SymbolInformation(node, PrimitiveTypeEnum.VOID));
                 node.getSymbolInfo().setDimensionArray(node.getChildren().size());
                 break;
-            case IDENTIFIER:
-                IdentifierNode idNode = (IdentifierNode) node;
-                node.setSymbolInfo(new SymbolInfo(node, new IdentifierType(idNode.getValue())));
+            case ID:
+                IDNode idNode = (IDNode) node;
+                node.setSymbolInfo(new SymbolInformation(node, new IdentifierTypeInterface(idNode.getValue())));
                 node.getSymbolInfo().setDimensionArray(node.getChildren().size());
                 break;
-            case METHOD_DECLARATION:
+            case METHOD:
                 visitMethodDeclarationNode(node);
                 break;
             case ARGUMENTS:
@@ -49,13 +49,13 @@ public class VtableGenerator implements SimpleVisitor {
             case START:
                 visitStartNode(node);
                 break;
-            case VARIABLE_DECLARATION:
+            case VARIABLE:
                 visitVariableDeclaration(node);
                 break;
-            case Class_DECLARATION:
+            case ClASS_INVOCATION:
                 visitClassDeclaration(node);
                 break;
-            case FIELD_DECLARATION:
+            case FIELD:
                 visitFieldDeclaration(node);
                 break;
             default:
@@ -63,14 +63,14 @@ public class VtableGenerator implements SimpleVisitor {
         }
     }
 
-    private void visitFieldDeclaration(ASTNode node) throws Exception {
+    private void visitFieldDeclaration(AbstractSyntaxTreeNodeInterface node) throws Exception {
         AccessMode accessMode = AccessMode.Public;
-        if (node.getChild(0).getNodeType().equals(NodeType.METHOD_ACCESS)) {
+        if (node.getChild(0).getNodeType().equals(NodeType.ACCESSMETHOD)) {
             switch (node.getChild(0).getChild(0).getNodeType()) {
-                case PRIVATE_ACCESS:
+                case PRIVATE:
                     accessMode = AccessMode.Private;
                     break;
-                case PUBLIC_ACCESS:
+                case PUBLIC:
                     accessMode = AccessMode.Public;
                     break;
                 /*case PROTECTED_ACCESS:
@@ -83,9 +83,9 @@ public class VtableGenerator implements SimpleVisitor {
 
     }
 
-    private void visitClassDeclaration(ASTNode node) throws Exception {
+    private void visitClassDeclaration(AbstractSyntaxTreeNodeInterface node) throws Exception {
         //identifier
-        IdentifierNode idNode = (IdentifierNode) node.getChild(0);
+        IDNode idNode = (IDNode) node.getChild(0);
         String className = idNode.getValue();
         ClassDecaf classDecaf = new ClassDecaf(className);
         /*if (node.getChild(1).getNodeType().equals(NodeType.EXTEND)) {
@@ -103,10 +103,10 @@ public class VtableGenerator implements SimpleVisitor {
 
     }
 
-    private void visitVariableDeclaration(ASTNode node) throws Exception {
+    private void visitVariableDeclaration(AbstractSyntaxTreeNodeInterface node) throws Exception {
         setParentSymbolInfo(node, node.getChild(0));
         //identifier
-        IdentifierNode idNode = (IdentifierNode) node.getChild(1);
+        IDNode idNode = (IDNode) node.getChild(1);
         String fieldName = idNode.getValue();
         if (ClassDecaf.currentClass != null) {
             if (symbolTable.getCurrentScopeName().equals(ClassDecaf.currentClass.getName())) {
@@ -131,7 +131,7 @@ public class VtableGenerator implements SimpleVisitor {
 //        }
     }
 
-    private void visitStartNode(ASTNode node) throws Exception {
+    private void visitStartNode(AbstractSyntaxTreeNodeInterface node) throws Exception {
         symbolTable.enterScope("global");
         visitAllChildren(node);
         boolean isMainExist = false;
@@ -165,12 +165,12 @@ public class VtableGenerator implements SimpleVisitor {
         }
     }
 
-    private void visitMethodDeclarationNode(ASTNode node) throws Exception {
+    private void visitMethodDeclarationNode(AbstractSyntaxTreeNodeInterface node) throws Exception {
         node.getChild(0).accept(this); //Type
-        SymbolInfo returnType = node.getChild(0).getSymbolInfo();
+        SymbolInformation returnType = node.getChild(0).getSymbolInfo();
 
         //identifier
-        IdentifierNode idNode = (IdentifierNode) node.getChild(1);
+        IDNode idNode = (IDNode) node.getChild(1);
         String methodName = idNode.getValue();
         Function method = new Function(methodName, returnType, symbolTable.getCurrentScope());
         if (functions.contains(method)) {
@@ -191,26 +191,26 @@ public class VtableGenerator implements SimpleVisitor {
         }
     }
 
-    private void visitArgumentsNode(ASTNode node) throws Exception {
+    private void visitArgumentsNode(AbstractSyntaxTreeNodeInterface node) throws Exception {
         int argumentsLen = node.getChildren().size() * (-4);
         Function function = Function.currentFunction;
         for (int i = argumentsLen / (-4); i >= 1; i--) {
-            ASTNode ArgumentNode = node.getChild(i - 1);
+            AbstractSyntaxTreeNodeInterface ArgumentNode = node.getChild(i - 1);
             ArgumentNode.accept(this);
             function.getArgumentsType().add(ArgumentNode.getChild(0).getSymbolInfo());
         }
     }
 
-    private void visitAllChildren(ASTNode node) throws Exception {
-        for (ASTNode child : node.getChildren()) {
+    private void visitAllChildren(AbstractSyntaxTreeNodeInterface node) throws Exception {
+        for (AbstractSyntaxTreeNodeInterface child : node.getChildren()) {
             child.accept(this);
         }
     }
 
-    private void setParentSymbolInfo(ASTNode node, ASTNode child) throws Exception {
+    private void setParentSymbolInfo(AbstractSyntaxTreeNodeInterface node, AbstractSyntaxTreeNodeInterface child) throws Exception {
         child.accept(this);
-        Type type = child.getSymbolInfo().getType();
-        SymbolInfo si = new SymbolInfo(node, type);
+        TypeInterface typeInterface = child.getSymbolInfo().getType();
+        SymbolInformation si = new SymbolInformation(node, typeInterface);
         si.setDimensionArray(child.getSymbolInfo().getDimensionArray());
         node.setSymbolInfo(si);
     }

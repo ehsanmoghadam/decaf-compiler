@@ -1,0 +1,3 @@
+difference in line #2: file: out/t255_expr.out -----> content: 1020 <> file: tests/t255_expr.out -----> content: 2 
+difference in line #4: file: out/t255_expr.out -----> content: 0 <> file: tests/t255_expr.out -----> content: 1020 
+difference in line #5: file: out/t255_expr.out -----> content: 0 <> file: tests/t255_expr.out -----> content: 1020 

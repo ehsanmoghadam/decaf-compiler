@@ -1,0 +1,1 @@
+difference in line #1: file: out/t905-expr6.out -----> content: Semantic Error <> file: tests/t905-expr6.out -----> content: Hello World! 

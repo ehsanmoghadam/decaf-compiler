@@ -3,10 +3,7 @@
 	false : .asciiz "false"
 
 	error: .asciiz "runtime ERROR"
-	global_main_a : .word 0
-	global_main_b : .word 0
-	StringLiteral_01: .asciiz "hello "
-	StringLiteral_11: .asciiz "world"
+	global_main_n : .word 0
 
 .text
 	.globl main
@@ -26,21 +23,14 @@
 	global_main:
 		sw $ra,0($sp)
 		addi $sp,$sp,4
-		la $a0, global_main_a
+		la $a0, global_main_n
 		lw $t0, 0($a0)
 		la $a3, 0($a0) 
-		la $t0, StringLiteral_01
+		li $t0, 2
 		sw $t0, 0($a3)
-		la $a0, global_main_b
+		la $a0, global_main_n
 		lw $t0, 0($a0)
-		la $a3, 0($a0) 
-		la $t0, StringLiteral_11
-		sw $t0, 0($a3)
-		la $a0, global_main_a
-		lw $t0, 0($a0)
-		la $a0, global_main_b
-		lw $t0, 0($a0)
-		li $v0, 4
+		li $v0, 1
 		add $a0, $t0, $zero
 		syscall
 		#print new Line

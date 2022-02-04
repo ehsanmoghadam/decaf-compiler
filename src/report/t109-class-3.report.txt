@@ -1,0 +1,1 @@
+difference in line #1: file: out/t109-class-3.out -----> content: Semantic Error <> file: tests/t109-class-3.out -----> content: 145369 

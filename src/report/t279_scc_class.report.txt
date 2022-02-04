@@ -1,0 +1,1 @@
+different line count in these files! : file out/t279_scc_class.out : #1 , file tests/t279_scc_class.out : #16 

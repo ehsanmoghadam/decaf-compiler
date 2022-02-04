@@ -1,22 +1,22 @@
 package compiler.codegenerator;
 
-import compiler.AST.Type;
+import compiler.AST.TypeInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 class Argument {
-    private Type type;
-    private String name;
+    TypeInterface typeInterface;
+    String name;
 
-    Argument(Type type, String name) {
-        this.type = type;
+    Argument(TypeInterface typeInterface, String name) {
+        this.typeInterface = typeInterface;
         this.name = name;
     }
 
-    public Type getType() {
-        return type;
+    public TypeInterface getType() {
+        return typeInterface;
     }
 
     public String getName() {
@@ -33,17 +33,17 @@ class Argument {
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, name);
+        return Objects.hash(typeInterface, name);
     }
 }
 
 public class Signature {
-    private Type returnType;
-    private String name;
-    private List<Argument> args = new ArrayList<>();
+    TypeInterface returnTypeInterface;
+    String name;
+    List<Argument> args = new ArrayList<>();
 
-    Signature(Type returnType, String name) {
-        this.returnType = returnType;
+    Signature(TypeInterface returnTypeInterface, String name) {
+        this.returnTypeInterface = returnTypeInterface;
         this.name = name;
     }
 
@@ -51,8 +51,8 @@ public class Signature {
         args.addAll(arguments);
     }
 
-    Type getReturnType() {
-        return returnType;
+    TypeInterface getReturnType() {
+        return returnTypeInterface;
     }
 
     public String getName() {
@@ -92,6 +92,6 @@ public class Signature {
 
     @Override
     public int hashCode() {
-        return Objects.hash(returnType, name, args.size());
+        return Objects.hash(returnTypeInterface, name, args.size());
     }
 }

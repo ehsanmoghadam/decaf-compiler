@@ -2,14 +2,10 @@ package compiler.codegenerator;
 
 import java.util.ArrayList;
 
-/**
- * A simple symbol table implementation.
- */
-
 public class SymbolTable implements Symbol {
-    private ArrayList<Scope> allScopes = new ArrayList<>();
-    private ArrayList<Scope> scopes = new ArrayList<>();
-    private Scope currentScope;
+    Scope currentScope;
+    ArrayList<Scope> scopes = new ArrayList<>();
+    ArrayList<Scope> allScopes = new ArrayList<>();
 
     public Scope getCurrentScope() {
         return currentScope;
@@ -44,7 +40,7 @@ public class SymbolTable implements Symbol {
         }
     }
 
-    void put(String id, SymbolInfo si) throws Exception {
+    void put(String id, SymbolInformation si) throws Exception {
         if (currentScope.getVariables().containsKey(id)) {
             throw new Exception("current scope already contains an entry for " + id);
         }

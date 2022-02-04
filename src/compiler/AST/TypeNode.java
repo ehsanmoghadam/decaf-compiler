@@ -1,17 +1,14 @@
 package compiler.AST;
 
-/**
- * A class to keep a type like int or char
- */
-public class TypeNode extends BaseASTNode {
-    private Type type;
+public class TypeNode extends DefaultAbstractSyntaxTreeNode {
+    private TypeInterface typeInterface;
 
-    public TypeNode(NodeType nodeType, Type type) {
+    public TypeNode(NodeType nodeType, TypeInterface typeInterface) {
         super(nodeType);
-        this.type = type;
+        this.typeInterface = typeInterface;
     }
 
-    public Type getType() {
-        return type;
+    public TypeInterface getType() {
+        return typeInterface;
     }
 }

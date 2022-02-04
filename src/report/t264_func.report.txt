@@ -1,0 +1,1 @@
+difference in line #1: file: out/t264_func.out -----> content: not ok <> file: tests/t264_func.out -----> content: ok 

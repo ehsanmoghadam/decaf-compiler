@@ -1,0 +1,2 @@
+difference in line #4: file: out/t093-expr-3.out -----> content: 0 <> file: tests/t093-expr-3.out -----> content: -1 
+difference in line #9: file: out/t093-expr-3.out -----> content: 0 <> file: tests/t093-expr-3.out -----> content: -1 

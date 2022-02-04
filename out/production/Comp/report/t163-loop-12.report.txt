@@ -1,0 +1,5 @@
+difference in line #1: file: out/t163-loop-12.out -----> content: 10 <> file: tests/t163-loop-12.out -----> content: 9 
+difference in line #2: file: out/t163-loop-12.out -----> content: 9 <> file: tests/t163-loop-12.out -----> content: 8 
+difference in line #3: file: out/t163-loop-12.out -----> content: 8 <> file: tests/t163-loop-12.out -----> content: 7 
+difference in line #4: file: out/t163-loop-12.out -----> content: 7 <> file: tests/t163-loop-12.out -----> content: 6 
+difference in line #5: file: out/t163-loop-12.out -----> content: 6 <> file: tests/t163-loop-12.out -----> content: 5 

@@ -1,0 +1,1 @@
+different line count in these files! : file out/t804-linefunc2.out : #1 , file tests/t804-linefunc2.out : #3 

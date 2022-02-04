@@ -1,0 +1,1 @@
+different line count in these files! : file out/t270_heapsort_glob.out : #1 , file tests/t270_heapsort_glob.out : #5 

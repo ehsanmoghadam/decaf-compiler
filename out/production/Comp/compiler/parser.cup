@@ -73,7 +73,7 @@ nonterminal ASTNode variableDecl_plus;
 // define variable
 nonterminal ASTNode variable;
 // types of definitions except void
-nonterminal ASTNode type;
+nonterminal ASTNode typeInterface;
 // args of functions
 nonterminal ASTNode formals;
 //statement block
@@ -221,7 +221,7 @@ variableDecl_plus ::= variableDecl_plus:vp variableDecl:v
                                                v.setParent(RESULT);
                                           :};
 
-variable ::= type:t identifier:i
+variable ::= typeInterface:t identifier:i
                           {:
                              RESULT = new BaseASTNode(NodeType.VARIABLE_DECLARATION);
                              RESULT.addChild(t);
@@ -230,7 +230,7 @@ variable ::= type:t identifier:i
                              i.setParent(RESULT);
                          :};
 
-type ::= INT
+typeInterface ::= INT
                      {: RESULT = new TypeNode(NodeType.INT_TYPE, PrimitiveType.INT); :}
                 | DOUBLE
                      {: RESULT = new TypeNode(NodeType.DOUBLE_TYPE, PrimitiveType.DOUBLE); :}
@@ -240,7 +240,7 @@ type ::= INT
                      {: RESULT = new TypeNode(NodeType.STRING_TYPE, PrimitiveType.STRING); :}
                 | identifier:t
                      {: RESULT = t; :}
-                | type:t LRBRACK
+                | typeInterface:t LRBRACK
                      {:
                       RESULT = t;
                       ASTNode e = new BaseASTNode(NodeType.EMPTY_ARRAY);
@@ -248,7 +248,7 @@ type ::= INT
                       e.setParent(RESULT);
                      :};
 
-functionDecl ::= type:t identifier:i LBRACES formals:f RBRACES stmtBlock:s
+functionDecl ::= typeInterface:t identifier:i LBRACES formals:f RBRACES stmtBlock:s
                           {:
                  			RESULT = new BaseASTNode(NodeType.METHOD_DECLARATION);
                  			RESULT.addChild(t, i, f, s);
@@ -267,7 +267,7 @@ functionDecl ::= type:t identifier:i LBRACES formals:f RBRACES stmtBlock:s
                              f.setParent(RESULT);
                              s.setParent(RESULT);
                          :}
-                                | type:t identifier:i LBRACES RBRACES stmtBlock:s
+                                | typeInterface:t identifier:i LBRACES RBRACES stmtBlock:s
                           {:
                              RESULT = new BaseASTNode(NodeType.METHOD_DECLARATION);
                              ASTNode f = new BaseASTNode(NodeType.ARGUMENTS);
@@ -385,9 +385,9 @@ accessMode ::= PRIVATE
 
 /*prototype_plus ::= prototype_plus prototype
                  | prototype;
-prototype ::= type ID LBRACES formals RBRACES COLON
+prototype ::= typeInterface ID LBRACES formals RBRACES COLON
              | VOID ID LBRACES formals RBRACES COLON
-             | type ID LBRACES RBRACES COLON
+             | typeInterface ID LBRACES RBRACES COLON
              | VOID ID LBRACES RBRACES COLON;*/
 
 stmtBlock ::= LCURLY RCURLY
@@ -858,7 +858,7 @@ expr ::= lValue:l ASSIGN expr:e
                       t.setParent(RESULT);
                       i.setParent(t);
                   :}
-                   | NEWARRAY LBRACES expr:e COMMA type:ty RBRACES
+                   | NEWARRAY LBRACES expr:e COMMA typeInterface:ty RBRACES
                   {:
                       ASTNode t = new BaseASTNode(NodeType.NEW_ARRAY);
                       RESULT = new ExpressionNode();

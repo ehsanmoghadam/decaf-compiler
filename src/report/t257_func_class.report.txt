@@ -1,0 +1,1 @@
+different line count in these files! : file out/t257_func_class.out : #1 , file tests/t257_func_class.out : #15 

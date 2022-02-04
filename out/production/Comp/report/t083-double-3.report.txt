@@ -1,0 +1,3 @@
+difference in line #1: file: out/t083-double-3.out -----> content: The following symbols are undefined: <> file: tests/t083-double-3.out -----> content: 3.14150000 
+difference in line #2: file: out/t083-double-3.out -----> content: main <> file: tests/t083-double-3.out -----> content: 455555552.00000000 
+difference in line #3: file: out/t083-double-3.out -----> content: [0x00400014]	0x0c000000  jal 0x00000000 [main]           ; 188: jal main <> file: tests/t083-double-3.out -----> content: -0.12345679 

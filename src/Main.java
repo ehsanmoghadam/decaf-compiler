@@ -1,10 +1,10 @@
 
 
-import compiler.AST.Program;
+import compiler.AST.Start;
 import compiler.Laxer;
 import compiler.Lexer;
 import compiler.Vtable.VtableGenerator;
-import compiler.codegenerator.CodeGenVisitor;
+import compiler.codegenerator.CodeGeneratorVisitor;
 import compiler.parser;
 
 import java.io.*;
@@ -81,9 +81,19 @@ public class Main {
             parser.parse();
 //            System.out.println("parser done");
         } catch (Exception e) {
+            String[] out = {".data",
+                    "\terror: .asciiz \"Syntax Error\"",
+                    ".text","\t.globl main\n",
+                    "\tmain:",
+                    "\t\tli $v0, 4",
+                    "\t\tla $a0, error",
+                    "\t\tsyscall",
+                    "\t\t#END OF PROGRAM",
+                    "\t\tli $v0,10\n\t\tsyscall"};
+            writeContentToFile(outputPath,out);
 //            System.out.println("Syntax Error");
-            String[] out = {"Syntax Error"};
-            writeContentToFile(outputPath, out);
+//            String[] out = {"Syntax Error"};
+//            writeContentToFile(outputPath, out);
             return;
 //            e.printStackTrace();
 //            System.out.println(e);
@@ -92,20 +102,36 @@ public class Main {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             PrintStream writer = new PrintStream(baos, true, StandardCharsets.UTF_8.name());
-            Program cu = parser.getRoot();
-//            System.out.println("in type visitor");
+            Start cu = parser.getRoot();
+//            System.out.println("in typeInterface visitor");
             cu.accept(new VtableGenerator());
 //            System.out.println("TV done");
 //            System.out.println("in code gen");
-            cu.accept(new CodeGenVisitor(writer));
+            cu.accept(new CodeGeneratorVisitor(writer));
             writer.flush();
             String[] out = {baos.toString(StandardCharsets.UTF_8.name())};
             writeContentToFile(outputPath, out);
 //            System.out.println("CG done");
         }catch (Exception e){
+            String[] out = {".data",
+                    "\terror: .asciiz \"Semantic Error\"",
+                    ".text","\t.globl main\n",
+                    "\tmain:",
+                    "\t\tli $v0, 4",
+                    "\t\tla $a0, error",
+                    "\t\tsyscall",
+                    "\t\t#END OF PROGRAM",
+                    "\t\tli $v0,10\n\t\tsyscall"};
+            e.printStackTrace();
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+            writeContentToFile(outputPath,out);
 //            e.printStackTrace();
-            String[] out = {"Semantic Error"};
-            writeContentToFile(outputPath, out);
+//            String[] out = {"Semantic Error"};
+//            writeContentToFile(outputPath, out);
+//            System.out.println("Semantic Error");
             return;
         }
 
